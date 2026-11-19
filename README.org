@@ -1,0 +1,71 @@
+:PROPERTIES:
+:ID: 5A2B5D4D-CFC1-4E25-9764-D2F8D7B5DB27
+:END:
+
+#+TITLE: ✨ pretty-message.el
+
+#+HTML: <p align="center">
+#+HTML: <a href="https://www.gnu.org/software/emacs/"><img src="https://img.shields.io/badge/Emacs-7F5AB6?style=for-the-badge&logo=gnuemacs&logoColor=white" alt="Emacs"></a>
+#+HTML: </p>
+
+#+HTML: <p align="center">
+#+HTML: <a href="https://github.com/artawower/pretty-message.el"><img src="https://img.shields.io/badge/GitHub-pretty--message.el-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"></a>
+#+HTML: </p>
+
+#+HTML: <p align="center">
+#+HTML: <a href="https://www.paypal.me/darkawower"><img src="https://img.shields.io/badge/PayPal-Donate-00457C?style=for-the-badge&logo=paypal&logoColor=white" alt="PayPal"></a>
+#+HTML: <a href="https://ko-fi.com/artawower"><img src="https://img.shields.io/badge/Ko--fi-Support-FF5E5B?style=for-the-badge&logo=kofi&logoColor=white" alt="Ko-fi"></a>
+#+HTML: <a href="https://patreon.com/artawower"><img src="https://img.shields.io/badge/Patreon-Support-F96854?style=for-the-badge&logo=patreon&logoColor=white" alt="Patreon"></a>
+#+HTML: </p>
+
+* Introduction
+
+A small personal package that makes echo-area messages look nicer: each
+message gets an icon and a color depending on whether it is an error, a
+success or plain information.
+
+I started it for a video about making Emacs look good, then decided to
+share it.
+
+* Connected links
+
+- [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Displaying-Messages.html][Displaying messages in the echo area]] (Emacs Lisp manual)
+
+* Install
+
+Requires Emacs 29.1 or newer.
+
+** elpaca
+
+#+begin_src emacs-lisp
+(use-package pretty-message
+  :ensure (:host github :repo "artawower/pretty-message.el")
+  :config
+  (pretty-message-mode 1))
+#+end_src
+
+** package-vc (built in)
+
+#+begin_src emacs-lisp
+(package-vc-install "https://github.com/artawower/pretty-message.el")
+(require 'pretty-message)
+(pretty-message-mode 1)
+#+end_src
+
+* Usage
+
+Turn the mode on with =M-x pretty-message-mode=. Then
+=(message "Hello")= shows as =❯❯ Hello=, =Wrote file= as =✓ Wrote file=,
+and errors as =✗ …=.
+
+Patterns, icons and faces can be changed with
+=M-x customize-group RET pretty-message=:
+
+- =pretty-message-error-regexps=, =pretty-message-success-regexps=: how messages are classified
+- =pretty-message-error-prefix=, =pretty-message-success-prefix=, =pretty-message-info-prefix=: the icons
+- faces =pretty-message-error=, =pretty-message-success=, =pretty-message-info= and their =-prefix= variants
+
+* 🍩 Contribute guide
+
+Any contribution is very much appreciated! Please read the [[./CONTRIBUTE.org][style guide]] before contributing to avoid misunderstandings!
+I would also appreciate it if you would consider supporting my work via [[https://ko-fi.com/artawower][Ko-fi]], [[https://www.paypal.me/darkawower][PayPal]], or becoming my [[https://www.patreon.com/artawower][patron]].
